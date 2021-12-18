@@ -51,8 +51,7 @@ public class login extends Fragment {     // Frag
                     Toast toast = Toast.makeText(getActivity(), "로그인성공", Toast.LENGTH_SHORT);
                     toast.show();
                     //인텐트 생성 및 호출
-                    Context context = view.getContext();
-                    Intent intent = new Intent(context, MainActivity.class);
+                    Intent intent = new Intent(getActivity().getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                 }
             }
@@ -62,8 +61,7 @@ public class login extends Fragment {     // Frag
             public void onClick(View view) {
                 Toast toast = Toast.makeText(getActivity(), "회원가입화면으로 이동합니다.", Toast.LENGTH_SHORT);
                 toast.show();
-                Context context = view.getContext();
-                Intent intent = new Intent(context,Join.class);
+                Intent intent = new Intent(getActivity().getApplicationContext(),Join.class);
                 startActivity(intent);
             }
         });
