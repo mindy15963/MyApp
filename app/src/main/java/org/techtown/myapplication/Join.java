@@ -38,7 +38,7 @@ public class Join extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.join);
 
         ActionBar actionbar = getSupportActionBar();
         actionbar.hide(); //타이틀바 가리기
