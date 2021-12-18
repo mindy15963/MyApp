@@ -26,7 +26,8 @@ public class AddAlarm extends AppCompatActivity {
         String strstartdate=startdate.getText().toString();
         EditText enddate=findViewById(R.id.enddate);
         String strenddate=enddate.getText().toString();
-        helper=new alarmData(strtime,strmedicine,strstartdate,strenddate);
+        helper=new alarmData(this);
+        db=helper.getWritableDatabase();
         Button setR1=findViewById(R.id.setRepetition1);
         setR1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +81,6 @@ public class AddAlarm extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*
                 String sql="insert into alarm values(";
                 sql += "'" + strtime + "',";
                 sql += "'" + strmedicine + "',";
@@ -88,7 +88,6 @@ public class AddAlarm extends AppCompatActivity {
                 sql += "'" + strenddate + "')";
                 db.execSQL(sql);
                 Toast.makeText(AddAlarm.this, "저장 완료", Toast.LENGTH_SHORT).show();
-                 */
                 finish();
             }
         });

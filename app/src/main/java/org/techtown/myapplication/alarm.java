@@ -123,8 +123,10 @@ public class alarm extends Fragment {
         add_string_m = m<10 ? "0"+m : Integer.toString(h);
         add_string_med = "약품";
         day_calc(day);
+        /*
         alarmData alarmdata = new alarmData(add_string_AMPM,add_string_h+":"+add_string_m,add_string_med,add_string_day);
         alarmList.add(alarmdata);
+         */
         alarmadapter.notifyDataSetChanged();
     }
 

@@ -32,8 +32,8 @@ public class EditAlarm extends AppCompatActivity {
         String strenddate=enddate.getText().toString();
         Intent intent=getIntent();
         _id=intent.getIntExtra("_id",0);
-        helper=new alarmData(strtime,strmedicine,strstartdate,strenddate);
-        /*
+        helper=new alarmData(this);
+        db=helper.getWritableDatabase();
         Cursor cursor=db.rawQuery("select * from alarm where _id="+_id, null);
         if(cursor.moveToNext()){
             TextView edittime=findViewById(R.id.time);
@@ -45,7 +45,6 @@ public class EditAlarm extends AppCompatActivity {
             TextView editenddate=findViewById(R.id.enddate);
             editenddate.setText(cursor.getString(4));
         }
-        */
 
         Button setR1=findViewById(R.id.setRepetition1);
         setR1.setOnClickListener(new View.OnClickListener() {
@@ -93,11 +92,9 @@ public class EditAlarm extends AppCompatActivity {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*
                 String sql="delete from alarm where _id="+_id;
                 db.execSQL(sql);
                 onRestart();
-                */
             }
         });
         Button cancel=findViewById(R.id.cancel);
@@ -111,12 +108,10 @@ public class EditAlarm extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*
                 String sql="update alarm set time='" + strtime + "'," + "medicine='" + strmedicine+ "'," + "startdate='" + strstartdate+ "'," + "enddate='" + strenddate + "'";
                 sql += " where _id=" +_id;
                 db.execSQL(sql);
                 Toast.makeText(EditAlarm.this, "수정 완료", Toast.LENGTH_SHORT).show();
-                */
                 finish();
             }
         });
