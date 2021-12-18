@@ -16,6 +16,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.time.DayOfWeek;
@@ -141,6 +143,15 @@ public class alarm extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
 
         alarmList = new ArrayList<>();
+        ImageButton addButton = (ImageButton)rootView.findViewById(R.id.AddButton);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Context context = view.getContext();
+                Intent addAlarm = new Intent(context,AddAlarm.class);
+                startActivity(addAlarm);
+            }
+        });
 
         alarmadapter = new alarmAdapter(alarmList);
         recyclerView.setAdapter(alarmadapter);
@@ -149,11 +160,5 @@ public class alarm extends Fragment {
         text = getString(R.string.time_left);
         return rootView;
     }
-    //알람 추가
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void alarmAdd(View v) {
-        Context context = v.getContext();
-        Intent addAlarm = new Intent(context,AddAlarm.class);
-        context.startActivity(addAlarm);
-    }
+
 }

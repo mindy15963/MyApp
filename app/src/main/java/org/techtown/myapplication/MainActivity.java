@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -65,6 +66,10 @@ public class MainActivity extends AppCompatActivity {
     public void clockClicked(View view) {
         Intent SwitchAlarm = new Intent(this, alarm.class);
         startActivity(SwitchAlarm);
+    }
+    public void displayAddAlarm(){
+        Intent addAlarm = new Intent(this,AddAlarm.class);
+        startActivity(addAlarm);
     }
 
     private void setFrag(int n) {
