@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddAlarm">
+
+    <EditText
+        android:id="@+id/time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="00:00"
+        android:padding="40sp"
+        android:textSize="40sp" />
+
+    <EditText
+        android:id="@+id/medicine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/time"
+        android:gravity="center"
+        android:hint="약품명"
+        android:padding="20sp"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/txt_startdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/medicine"
+        android:gravity="center"
+        android:text="시작일"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/startdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_startdate"
+        android:gravity="center"
+        android:hint="0000-00-00"
+        android:padding="25sp"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/txt_enddate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/startdate"
+        android:gravity="center"
+        android:text="종료일"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/enddate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_enddate"
+        android:gravity="center"
+        android:hint="0000-00-00"
+        android:padding="25sp"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/setRepetition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/enddate"
+        android:text="월 화 수 목 금 토 일" />
+
+    <Button
+        android:id="@+id/cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/setRepetition"
+        android:background="@drawable/btn_bw"
+        android:text="취소" />
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cancel"
+        android:background="@drawable/btn_bw"
+        android:text="저장" />
+</RelativeLayout>

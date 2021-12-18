@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_recommend"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_wifi_protected_setup_24"
+        android:title="recommend"
+        />
+
+    <item
+        android:id="@+id/action_star"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_star_24"
+        android:title="star"
+        />
+
+    <item
+        android:id="@+id/action_login"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_login_24"
+        android:title="login"
+        />
+
+    <item
+        android:id="@+id/action_extend_sc"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_zoom_in_24"
+        android:title="extend_sc"
+        />
+
+    <item
+        android:id="@+id/action_alarm"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_access_alarm_24"
+        android:title="alarm"
+        />
+</menu>
