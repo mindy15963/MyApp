@@ -1,6 +1,8 @@
 package org.techtown.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -20,6 +23,8 @@ public class login extends Fragment {     // Frag
     boolean loginpressed = false;
 
     EditText cnickname, cpw;
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
 
     @Nullable
     @Override
@@ -46,7 +51,8 @@ public class login extends Fragment {     // Frag
                     Toast toast = Toast.makeText(getActivity(), "로그인성공", Toast.LENGTH_SHORT);
                     toast.show();
                     //인텐트 생성 및 호출
-                    Intent intent = new Intent(getActivity().getApplicationContext(), MainActivity.class);
+                    Context context = view.getContext();
+                    Intent intent = new Intent(context, MainActivity.class);
                     startActivity(intent);
                 }
             }
@@ -56,7 +62,8 @@ public class login extends Fragment {     // Frag
             public void onClick(View view) {
                 Toast toast = Toast.makeText(getActivity(), "회원가입화면으로 이동합니다.", Toast.LENGTH_SHORT);
                 toast.show();
-                Intent intent = new Intent(getActivity().getApplicationContext(),Join.class);
+                Context context = view.getContext();
+                Intent intent = new Intent(context,Join.class);
                 startActivity(intent);
             }
         });
