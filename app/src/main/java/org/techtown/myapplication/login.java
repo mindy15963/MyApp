@@ -28,8 +28,8 @@ public class login extends Fragment {     // Frag
         cnickname = rootView.findViewById(R.id.id);
         cpw = rootView.findViewById(R.id.pw);
 
-        Button btnlogin = rootView.findViewById(R.id.btn_login);
-        Button btnsignup = rootView.findViewById(R.id.btn_signup);
+        Button btnlogin = (Button)rootView.findViewById(R.id.btn_login);
+        Button btnsignup = (Button)rootView.findViewById(R.id.btn_signup);
 
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
