@@ -27,8 +27,44 @@ public class AddAlarm extends AppCompatActivity {
         EditText enddate=findViewById(R.id.enddate);
         String strenddate=enddate.getText().toString();
         helper=new alarmData(strtime,strmedicine,strstartdate,strenddate);
-        Button setR=findViewById(R.id.setRepetition);
-        setR.setOnClickListener(new View.OnClickListener() {
+        Button setR1=findViewById(R.id.setRepetition1);
+        setR1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+        Button setR2=findViewById(R.id.setRepetition2);
+        setR2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+        Button setR3=findViewById(R.id.setRepetition3);
+        setR3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+        Button setR4=findViewById(R.id.setRepetition4);
+        setR4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+        Button setR5=findViewById(R.id.setRepetition5);
+        setR5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+        Button setR6=findViewById(R.id.setRepetition6);
+        setR6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+        Button setR7=findViewById(R.id.setRepetition7);
+        setR7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
             }
