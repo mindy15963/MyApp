@@ -4,192 +4,232 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditAlarm">
-    <Button
-        android:id="@+id/setRepetition7"
-        android:layout_width="35dp"
-        android:layout_height="40dp"
-        android:layout_below="@id/enddate"
-        android:layout_marginStart="376dp"
-        android:layout_marginTop="4dp"
-        android:text="일"
-        android:background="@drawable/btn_bw"
-        app:layout_constraintBottom_toTopOf="@+id/cancel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enddate" />
-
-    <Button
-        android:id="@+id/setRepetition6"
-        android:layout_width="35dp"
-        android:layout_height="40dp"
-        android:layout_below="@id/enddate"
-        android:layout_marginStart="316dp"
-        android:layout_marginTop="4dp"
-        android:text="토"
-        android:background="@drawable/btn_bw"
-        app:layout_constraintBottom_toTopOf="@+id/cancel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enddate" />
-
-    <Button
-        android:id="@+id/setRepetition5"
-        android:layout_width="35dp"
-        android:layout_height="40dp"
-        android:layout_below="@id/enddate"
-        android:layout_marginStart="252dp"
-        android:layout_marginTop="4dp"
-        android:text="금"
-        android:background="@drawable/btn_bw"
-        app:layout_constraintBottom_toTopOf="@+id/cancel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enddate" />
-
-    <Button
-        android:id="@+id/setRepetition4"
-        android:layout_width="35dp"
-        android:layout_height="40dp"
-        android:layout_below="@id/enddate"
-        android:layout_marginStart="188dp"
-        android:layout_marginTop="4dp"
-        android:text="목"
-        android:background="@drawable/btn_bw"
-        app:layout_constraintBottom_toTopOf="@+id/cancel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enddate" />
-
-    <Button
-        android:id="@+id/setRepetition3"
-        android:layout_width="35dp"
-        android:layout_height="40dp"
-        android:layout_below="@id/enddate"
-        android:layout_marginStart="132dp"
-        android:layout_marginTop="4dp"
-        android:text="수"
-        android:background="@drawable/btn_bw"
-        app:layout_constraintBottom_toTopOf="@+id/cancel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enddate" />
-
-    <Button
-        android:id="@+id/setRepetition2"
-        android:layout_width="35dp"
-        android:layout_height="40dp"
-        android:layout_below="@id/enddate"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="4dp"
-        android:text="화"
-        android:background="@drawable/btn_bw"
-        app:layout_constraintBottom_toTopOf="@+id/cancel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enddate" />
+    tools:context=".AddAlarm">
 
     <EditText
-        android:id="@+id/time"
+        android:id="@+id/editAlarmName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:hint="00:00"
-        android:padding="40sp"
-        android:textSize="40sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/medicine"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/time"
+        android:layout_below="@id/setTime"
         android:gravity="center"
         android:hint="약품명"
         android:padding="20sp"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/editcancelBtn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/time" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.61" />
 
     <TextView
         android:id="@+id/txt_startdate"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/medicine"
+        android:layout_below="@id/editAlarmName"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="시작일"
         android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/editcancelBtn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/medicine" />
-
-    <EditText
-        android:id="@+id/startdate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txt_startdate"
-        android:gravity="center"
-        android:hint="0000-00-00"
-        android:padding="25sp"
-        android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_startdate" />
+        app:layout_constraintTop_toBottomOf="@+id/editAlarmName"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/txt_enddate"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/startdate"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="종료일"
         android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/editcancelBtn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startdate" />
-
-    <EditText
-        android:id="@+id/enddate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txt_enddate"
-        android:gravity="center"
-        android:hint="0000-00-00"
-        android:padding="25sp"
-        android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_enddate" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_startdate"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/setRepetition1"
-        android:layout_width="35dp"
-        android:layout_height="40dp"
-        android:layout_below="@id/enddate"
-        android:text="월"
-        android:background="@drawable/btn_bw"
-        app:layout_constraintBottom_toTopOf="@+id/cancel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enddate" />
-
-    <Button
-        android:id="@+id/cancel"
+        android:id="@+id/editcancelBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/delete"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/btn_bw"
         android:text="취소"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/delete" />
+        app:layout_constraintBottom_toTopOf="@+id/editsaveBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/save"
+        android:id="@+id/editsaveBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/cancel"
+        android:layout_below="@id/editcancelBtn"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/btn_bw"
         android:text="저장"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TimePicker
+        android:id="@+id/setTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:timePickerMode="spinner"
+        app:layout_constraintBottom_toTopOf="@+id/editAlarmName"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cancel" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/editStartdate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="date"
+        android:text="YYYY-MM-DD"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txt_startdate"
+        app:layout_constraintTop_toBottomOf="@+id/editAlarmName" />
+
+    <TextView
+        android:id="@+id/editEnddate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="date"
+        android:text="YYYY-MM-DD"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txt_enddate"
+        app:layout_constraintTop_toBottomOf="@+id/editStartdate" />
 
     <Button
-        android:id="@+id/delete"
-        android:layout_width="match_parent"
+        android:id="@+id/editsetStartdate"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/setRepetition1"
-        android:background="@drawable/btn_bw"
-        android:text="삭제"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="#00ff0000"
+        android:text="YYYY-MM-DD"
+        android:textColor="#00ff0000"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txt_startdate"
+        app:layout_constraintTop_toBottomOf="@+id/editAlarmName" />
+
+    <Button
+        android:id="@+id/editsetEnddate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="#00ff0000"
+        android:text="YYYY-MM-DD"
+        android:textColor="#00ff0000"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/txt_startdate"
+        app:layout_constraintTop_toBottomOf="@+id/editStartdate" />
+
+    <CheckBox
+        android:id="@+id/cb_sun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="일"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setRepetition1"/>
+        app:layout_constraintTop_toBottomOf="@+id/editsetEnddate"
+        tools:ignore="MissingConstraints" />
+
+    <CheckBox
+        android:id="@+id/cb_mon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="월"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editsetEnddate"
+        tools:ignore="MissingConstraints" />
+
+    <CheckBox
+        android:id="@+id/cb_wed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="수"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editsetEnddate"
+        tools:ignore="MissingConstraints" />
+
+    <CheckBox
+        android:id="@+id/cb_tue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="화"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.35"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editsetEnddate"
+        tools:ignore="MissingConstraints" />
+
+    <CheckBox
+        android:id="@+id/cb_fri"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="금"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editsetEnddate"
+        tools:ignore="MissingConstraints" />
+
+    <CheckBox
+        android:id="@+id/cb_thu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="목"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.65"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editsetEnddate"
+        tools:ignore="MissingConstraints" />
+
+    <CheckBox
+        android:id="@+id/cb_sat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="토"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editsetEnddate"
+        tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
