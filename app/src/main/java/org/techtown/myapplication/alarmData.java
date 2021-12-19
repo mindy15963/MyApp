@@ -16,7 +16,6 @@ public class alarmData extends SQLiteOpenHelper {
         super(context, "alarm.db", null, 1);
     }
     @Override
-    //글 작성
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table alarm(_id integer primary key autoincrement,_time time,medicine text,starttime date,endtime date)");
     }
