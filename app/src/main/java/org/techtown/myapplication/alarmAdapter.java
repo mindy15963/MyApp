@@ -32,10 +32,10 @@ public class alarmAdapter extends RecyclerView.Adapter<alarmAdapter.alarmViewHol
 
     @Override
     public void onBindViewHolder(@NonNull alarmViewHolder holder, int position) {
-        holder.timeText.setText(alarmList.get(position).getMedicineText());
-        holder.medText.setText(alarmList.get(position).getStarttimeText());
-        holder.dayText.setText(alarmList.get(position).getEndtimeText());
-        holder.ampmText.setText(alarmList.get(position).getTimeText());
+        holder.timeText.setText(alarmList.get(position).gettimeText());
+        holder.medText.setText(alarmList.get(position).getmedText());
+        holder.dayText.setText(alarmList.get(position).getdayText());
+        holder.ampmText.setText(alarmList.get(position).getampmText());
 
         holder.itemView.setTag(position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {

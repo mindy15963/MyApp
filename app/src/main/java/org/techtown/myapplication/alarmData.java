@@ -1,58 +1,47 @@
 package org.techtown.myapplication;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-
-import androidx.annotation.Nullable;
-
-public class alarmData extends SQLiteOpenHelper {
+public class alarmData {
+    private String ampmText;
     private String timeText;
-    private String medicineText;
-    private String starttimeText;
-    private String endtimeText;
+    private String medText;
+    private String dayText;
 
-    public alarmData(@Nullable Context context) {
-        super(context, "alarm.db", null, 1);
-    }
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table alarm(_id integer primary key autoincrement,_time time,medicine text,starttime date,endtime date)");
-    }
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+    public alarmData(String ampmText, String timeText, String medText, String dayText) {
+        this.ampmText = ampmText;
+        this.timeText = timeText;
+        this.medText = medText;
+        this.dayText = dayText;
     }
 
-    public String getTimeText() {
+    public String getampmText() {
+        return ampmText;
+    }
+
+    public void setampmText(String ampmText) {
+        this.ampmText = ampmText;
+    }
+
+    public String gettimeText() {
         return timeText;
     }
 
-    public void setTimeText(String timeText) {
+    public void settimeText(String timeText) {
         this.timeText = timeText;
     }
 
-    public String getMedicineText() {
-        return medicineText;
+    public String getmedText() {
+        return medText;
     }
 
-    public void setMedicineText(String medicineText) {
-        this.medicineText = medicineText;
+    public void setmedText(String medText) {
+        this.medText = medText;
     }
 
-    public String getStarttimeText() {
-        return starttimeText;
+    public String getdayText() {
+        return dayText;
     }
 
-    public void setStarttimeText(String starttimeText) {
-        this.starttimeText = starttimeText;
-    }
-
-    public String getEndtimeText() {
-        return endtimeText;
-    }
-
-    public void setEndtimeText(String endtimeText) {
-        this.endtimeText = endtimeText;
+    public void setdayText(String dayText) {
+        this.dayText = dayText;
     }
 }

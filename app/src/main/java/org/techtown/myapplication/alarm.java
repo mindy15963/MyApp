@@ -9,10 +9,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,14 +31,13 @@ import java.util.ArrayList;
 
 public class alarm extends Fragment {
 
-    private ArrayList<alarmData> alarmList;
+    private ArrayList<alarmData> alarmList = new ArrayList<>();
+    static ArrayList<String> arrayIndex  =  new ArrayList<>();
     private alarmAdapter alarmadapter;
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
 
     private int left_h = 0;//남은 시간
-    private int cur_d; //현재 요일
-    private int cur_h; //현재 시
     private int add_h = -1; //시
     private int add_m; //분
     private int add_med; //약품
@@ -46,21 +48,14 @@ public class alarm extends Fragment {
     private String add_string_med;
     private String add_string_day;
     private String text;
+    alarmDBHelper dbHelper;
     TextView t;
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void set_cur_date(){                                                                        // 현재 시간 설정
-        LocalDate date = LocalDate.now(ZoneId.of("Asia/Seoul"));
-        LocalTime time = LocalTime.now(ZoneId.of("Asia/Seoul"));
-        DayOfWeek dow = date.getDayOfWeek();
-        cur_d = dow.getValue();
-        cur_h = time.getHour();
-    }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void left_time_calc(int hour, int day){
+    public int left_time_calc(int hour, int day){
         boolean end = false;
-        int resh = hour-cur_h;
-        int now_day = cur_d;
+        int resh = hour-LocalTime.now(ZoneId.of("Asia/Seoul")).getHour();
+        int now_day = LocalDate.now(ZoneId.of("Asia/Seoul")).getDayOfWeek().getValue();
         int add_day = day;
         int count = 0;
         if(resh<0){
@@ -87,7 +82,8 @@ public class alarm extends Fragment {
                 now_day = 1;
             count++;
         }
-        t.setText(String.format(text,count*24+resh));
+        //t.setText(String.format(text,count*24+resh));
+        return count*24+resh;
     }
 
     //요일 출력값 설정
@@ -108,6 +104,26 @@ public class alarm extends Fragment {
                 day /= 10;
             }
             add_string_day = result;
+        }
+    }
+
+    public String day_calc_string(int day){
+        String result = "";
+        if(day == 7654321) return ",매일";
+        else if(day == 76) return ",주말";
+        else if(day == 54321) return ",평일";
+        else{
+            while(day>0){
+                if(day%10 == 1) result = result + ",월";
+                else if(day%10 == 2) result = result + ",화";
+                else if(day%10 == 3) result = result + ",수";
+                else if(day%10 == 4) result = result + ",목";
+                else if(day%10 == 5) result = result + ",금";
+                else if(day%10 == 6) result = result + ",토";
+                else if(day%10 == 7) result = result + ",일";
+                day /= 10;
+            }
+            return result;
         }
     }
 
@@ -137,14 +153,11 @@ public class alarm extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.alarm, container, false);
 
-        ActionBar actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
-        actionBar.hide();
-
         recyclerView = rootView.findViewById(R.id.rv);
         linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        alarmList = new ArrayList<>();
+//추가버튼 이벤트 설정
         ImageButton addButton = (ImageButton)rootView.findViewById(R.id.AddButton);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -157,10 +170,50 @@ public class alarm extends Fragment {
 
         alarmadapter = new alarmAdapter(alarmList);
         recyclerView.setAdapter(alarmadapter);
-        set_cur_date();
         t = rootView.findViewById(R.id.TimeLeftText);
         text = getString(R.string.time_left);
+
+        dbHelper = new alarmDBHelper(this.getContext());
+        dbHelper.open();
+        dbHelper.create();
+
+        showDatabase();
+
         return rootView;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @SuppressLint("Range")
+    public void showDatabase(){                                                                 //데이터베이스 내용들을 리사이클러뷰에 표시
+        Cursor iCursor = dbHelper.sortColumn();
+        Log.d("showDatabase", "DB Size: " + iCursor.getCount());
+        alarmList.clear();
+        arrayIndex.clear();
+        int min=-1;
+        while(iCursor.moveToNext()){
+            @SuppressLint("Range") String tempIndex = iCursor.getString(iCursor.getColumnIndex("_id"));
+            String ampmText;
+            String timeText;
+            String medText;
+            String dayText;
+            if(iCursor.getInt(iCursor.getColumnIndex("hour"))%24>=12)
+                ampmText = "오후";
+            else
+                ampmText = "오전";
+
+            timeText = iCursor.getInt(iCursor.getColumnIndex("hour"))+":"
+                    +iCursor.getInt(iCursor.getColumnIndex("minute"));
+            medText = iCursor.getString(iCursor.getColumnIndex("medicine"));
+            dayText = day_calc_string(iCursor.getInt(iCursor.getColumnIndex("day")));
+            alarmData alarmdata = new alarmData(ampmText,timeText,medText,dayText);
+            alarmList.add(alarmdata);
+            arrayIndex.add(tempIndex);
+            int ltc = left_time_calc(iCursor.getInt(iCursor.getColumnIndex("hour")),iCursor.getInt(iCursor.getColumnIndex("day")));
+            if(min<0) min=ltc;
+            else if(min>ltc) min=ltc;
+        }
+        if(min<0) t.setText("저장된 알람이 없습니다.");
+        else t.setText(String.format(text,min));
     }
 
 }
