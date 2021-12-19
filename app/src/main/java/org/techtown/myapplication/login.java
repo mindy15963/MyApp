@@ -31,7 +31,7 @@ public class login extends Fragment {     // Frag
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.login, container, false);
         cnickname = rootView.findViewById(R.id.id);
-        cpw = rootView.findViewById(R.id.pw);
+        cpw = rootView.findViewById(R.id.pwd);
 
         Button btnlogin = (Button)rootView.findViewById(R.id.btn_login);
         Button btnsignup = (Button)rootView.findViewById(R.id.btn_signup);

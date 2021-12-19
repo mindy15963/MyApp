@@ -31,11 +31,23 @@ public class DBHelper extends SQLiteOpenHelper
     // INSERT
     public void InsertUser(String _nickname, String _password, String _name, String _age, String _sex, String _health){
         SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("INSERT INTO User (nickname, password, name, age, sex, health) VALUES('" + _nickname + "','" + _password + "','" + _name + "','" + _sex + "','" + _health + "');");
-
+        db.execSQL("INSERT INTO User (nickname, password, name, age, sex, health) VALUES('" + _nickname + "','" + _password + "','" + _name + "','" + _age + "','" + _sex + "','" + _health + "');");
     }
 
-    // UDATE DELETE SELECT
-
+    // UPDATE
+    public void UpdateUser(String _nickname, String _password, String _name, String _age, String _sex, String _health){
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("UPDATE User SET nickname = '" + _nickname + "', password = '" + _password + "', name = '" + _name + "', age = '" + _age + "', sex = '" + _sex + "', health = '" + _health + "';");
+    }
+    // DELETE
+    public void DeleteUser(int id){
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("DELETE FROM User WHERE id = " + id + ";");
+    }
+    // SELECT
+    public void SelectUser(int id){
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("SELECT * FROM User WHERE id = " + id + ";");
+    }
 }
 
