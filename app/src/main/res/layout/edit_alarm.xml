@@ -15,7 +15,7 @@
         android:hint="약품명"
         android:padding="20sp"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/editcancelBtn"
+        app:layout_constraintBottom_toTopOf="@id/editdeleteBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.61" />
@@ -30,7 +30,7 @@
         android:gravity="center"
         android:text="시작일"
         android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/editcancelBtn"
+        app:layout_constraintBottom_toTopOf="@id/editdeleteBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editAlarmName"
         app:layout_constraintVertical_bias="0.0" />
@@ -44,7 +44,7 @@
         android:gravity="center"
         android:text="종료일"
         android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/editcancelBtn"
+        app:layout_constraintBottom_toTopOf="@id/editdeleteBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_startdate"
         app:layout_constraintVertical_bias="0.0" />
