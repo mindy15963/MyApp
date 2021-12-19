@@ -7,6 +7,7 @@ import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
@@ -56,28 +57,33 @@ public class AddAlarm extends AppCompatActivity {
     private int hour, minute;
     private TextView startdate, enddate;
     private Button startdatebtn, enddatebtn, savebtn, cancelbtn;
+    private EditText medicineName;
     CheckBox cbSun, cbMon, cbTue, cbWed, cbThu, cbFri, cbSat;
+    alarmDBHelper dbHelper;
+    int start_year, start_month, start_date, end_year, end_month, end_date;
 
     @SuppressLint({"SetTextI18n", "CutPasteId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_alarm);
-
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
         initialize();
 
         Calendar calendar = Calendar.getInstance();
-        startdate.setText(calendar.get(YEAR) + "-" + calendar.get(Calendar.MONTH) + "-" + calendar.get(Calendar.DATE));
-        enddate.setText(calendar.get(YEAR) + "-" + calendar.get(Calendar.MONTH) + "-" + calendar.get(Calendar.DATE));
+        startdate.setText(calendar.get(YEAR) + "-" + (calendar.get(Calendar.MONTH)+1) + "-" + calendar.get(Calendar.DATE));
+        enddate.setText(calendar.get(YEAR) + "-" + (calendar.get(Calendar.MONTH)+1) + "-" + calendar.get(Calendar.DATE));
 
         DatePickerDialog startDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) { //DB는 여기서? 처리하면? 될것같아요..........
                 startdate.setText(year + "-" + (month + 1) + "-" + day);
+                start_year = year;
+                start_month = month;
+                start_date = day;
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE));
 
@@ -95,6 +101,9 @@ public class AddAlarm extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
                 enddate.setText(year + "-" + (month + 1) + "-" + day);
+                end_year = year;
+                end_month = month;
+                end_date = day;
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE));
 
@@ -119,6 +128,7 @@ public class AddAlarm extends AppCompatActivity {
         cancelbtn = findViewById(R.id.addcancelBtn);
 
         savebtn.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View view) {
                 regist(view);
@@ -131,22 +141,34 @@ public class AddAlarm extends AppCompatActivity {
                 finish();
             }
         });
+        alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        dbHelper = new alarmDBHelper(this);
+        dbHelper.open();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void regist(View view) {
 
-        boolean[] week = { false, cbSun.isChecked(), cbMon.isChecked(), cbTue.isChecked(), cbWed.isChecked(), cbThu.isChecked(), cbFri.isChecked(), cbSat.isChecked() };
+        boolean[] week = { false, cbMon.isChecked(), cbTue.isChecked(), cbWed.isChecked(), cbThu.isChecked(), cbFri.isChecked(), cbSat.isChecked(), cbSun.isChecked() };
 
         if(!cbSun.isChecked() &&  !cbMon.isChecked() &&  !cbTue.isChecked() && !cbWed.isChecked() &&  !cbThu.isChecked() && !cbFri.isChecked() && !cbSat.isChecked()){
             Toast.makeText(this, "요일을 선택해 주세요.", Toast.LENGTH_SHORT).show();
             return;
         }
 
+        int day_set = 0;
+        int weight = 1;
+        for(int i=1; i<=7; i++){
+            if(week[i]) {
+                day_set= day_set + i*weight;
+                weight*=10;
+            }
+        }
+
         hour = timePicker.getHour();
         minute = timePicker.getMinute();
 
-        Intent intent = new Intent(this, alarm.class);
+        Intent intent = new Intent(this, AddAlarm.class);
         intent.putExtra("weekday", week);
         PendingIntent pIntent = PendingIntent.getBroadcast(this, 0,intent, 0); //PendingIntent.FLAG_UPDATE_CURRENT
         Calendar calendar = Calendar.getInstance();
@@ -173,10 +195,14 @@ public class AddAlarm extends AppCompatActivity {
 
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, selectTime,  intervalDay, pIntent);
 
+        String med = medicineName.getText().toString();
+
+        dbHelper.insertColumn(hour,minute,med,this.start_year, this.start_month, this.start_date, this.end_year, this.end_month, this.end_date, day_set);
+        finish();
     }
 
     public void unregist(View view) {
-        Intent intent = new Intent(this, alarm.class);
+        Intent intent = new Intent(this, AddAlarm.class);
         PendingIntent pIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
         alarmManager.cancel(pIntent);
     }// unregist()..
@@ -191,6 +217,7 @@ public class AddAlarm extends AppCompatActivity {
         cbFri = findViewById(R.id.cb_fri);
         cbSat = findViewById(R.id.cb_sat);
 
+        medicineName = findViewById(R.id.addAlarmName);
         startdate = findViewById(R.id.addStartdate);
         enddate = findViewById(R.id.addEnddate);
         startdatebtn = findViewById(R.id.addsetStartdate);
@@ -198,4 +225,3 @@ public class AddAlarm extends AppCompatActivity {
         timePicker = findViewById(R.id.setTime);
     }
 }
-

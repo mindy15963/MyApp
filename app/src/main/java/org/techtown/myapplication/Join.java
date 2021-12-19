@@ -140,8 +140,8 @@ public class Join extends AppCompatActivity {
 
     /*
     @SuppressLint("WrongViewCast")
-    private void setInit() {
-        mDBHelper = new DBHelper(this);
+    private void setInit(){
+        mDBHelper = new DBHelpter(this);
         mRv_user = findViewById(R.id.rv);
         mBtn_signup = findViewById(R.id.btn_signup);
         mUserItems = new ArrayList<>();
@@ -151,8 +151,11 @@ public class Join extends AppCompatActivity {
             public void onClick(View view) {
                 // 팝업창
                 Dialog dialog;
+
             }
         });
+
     }
     */
+
 }

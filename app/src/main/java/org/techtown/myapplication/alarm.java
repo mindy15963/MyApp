@@ -152,6 +152,9 @@ public class alarm extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.alarm, container, false);
+//액션바 숨기기
+        ActionBar actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
+        actionBar.hide();
 
         recyclerView = rootView.findViewById(R.id.rv);
         linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -172,6 +175,17 @@ public class alarm extends Fragment {
         recyclerView.setAdapter(alarmadapter);
         t = rootView.findViewById(R.id.TimeLeftText);
         text = getString(R.string.time_left);
+
+        alarmadapter.setOnItemClickListener(new alarmAdapter.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(View v, int pos)
+            {
+                Intent intent = new Intent(getContext(),EditAlarm.class);
+                intent.putExtra("pos",Long.parseLong(arrayIndex.get(pos)));
+                startActivity(intent);
+            }
+        });
 
         dbHelper = new alarmDBHelper(this.getContext());
         dbHelper.open();

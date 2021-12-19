@@ -1,5 +1,6 @@
 package org.techtown.myapplication;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -26,12 +27,21 @@ public class alarmAdapter extends RecyclerView.Adapter<alarmAdapter.alarmViewHol
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_alarm,parent,false);
         alarmViewHolder holder = new alarmViewHolder(view);
-
         return holder;
     }
 
+    public interface OnItemClickListener {
+        void onItemClick(View v, int pos);
+    }
+
+    private OnItemClickListener mListener = null;
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
+    }
+
     @Override
-    public void onBindViewHolder(@NonNull alarmViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull alarmViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.timeText.setText(alarmList.get(position).gettimeText());
         holder.medText.setText(alarmList.get(position).getmedText());
         holder.dayText.setText(alarmList.get(position).getdayText());
@@ -40,10 +50,12 @@ public class alarmAdapter extends RecyclerView.Adapter<alarmAdapter.alarmViewHol
         holder.itemView.setTag(position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {                                                                    //클릭 시 수정 화면으로 넘어감
-                Context context = view.getContext();
-                Intent editAlarm = new Intent(context,EditAlarm.class);
-                context.startActivity(editAlarm);
+            public void onClick(View view) {
+                int pos = position;
+                if (pos != RecyclerView.NO_POSITION)
+                {
+                    mListener.onItemClick(view, pos);
+                }
             }
         });
     }
