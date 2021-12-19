@@ -75,8 +75,8 @@ public class AddAlarm extends AppCompatActivity {
         initialize();
 
         Calendar calendar = Calendar.getInstance();
-        startdate.setText(calendar.get(YEAR) + "-" + (calendar.get(Calendar.MONTH)+1) + "-" + calendar.get(Calendar.DATE));
-        enddate.setText(calendar.get(YEAR) + "-" + (calendar.get(Calendar.MONTH)+1) + "-" + calendar.get(Calendar.DATE));
+        startdate.setText(calendar.get(YEAR) + "-" + calendar.get(Calendar.MONTH) + "-" + calendar.get(Calendar.DATE));
+        enddate.setText(calendar.get(YEAR) + "-" + calendar.get(Calendar.MONTH) + "-" + calendar.get(Calendar.DATE));
 
         DatePickerDialog startDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @SuppressLint("SetTextI18n")
@@ -130,7 +130,6 @@ public class AddAlarm extends AppCompatActivity {
         cancelbtn = findViewById(R.id.addcancelBtn);
 
         savebtn.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View view) {
                 regist(view);
@@ -148,10 +147,12 @@ public class AddAlarm extends AppCompatActivity {
         dbHelper.open();
     }
 
+
+
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void regist(View view) {
 
-        boolean[] week = { false, cbMon.isChecked(), cbTue.isChecked(), cbWed.isChecked(), cbThu.isChecked(), cbFri.isChecked(), cbSat.isChecked(), cbSun.isChecked() };
+        boolean[] week = { false, cbSun.isChecked(), cbMon.isChecked(), cbTue.isChecked(), cbWed.isChecked(), cbThu.isChecked(), cbFri.isChecked(), cbSat.isChecked() };
 
         if(!cbSun.isChecked() &&  !cbMon.isChecked() &&  !cbTue.isChecked() && !cbWed.isChecked() &&  !cbThu.isChecked() && !cbFri.isChecked() && !cbSat.isChecked()){
             Toast.makeText(this, "요일을 선택해 주세요.", Toast.LENGTH_SHORT).show();

@@ -51,6 +51,24 @@ public class UserDBHelper {
         uDB.close();
     }
 
+    public Boolean checkusername(String userid){
+        Cursor c = uDB.rawQuery("SELECT * FROM usertable WHERE USERID = ?", new String[] {userid});
+        if (c.getCount() > 0)
+            return false;
+        else
+            return true;
+    }
+
+
+
+    public Boolean memberCheck(String userid, String pw){
+        Cursor c = uDB.rawQuery("SELECT * FROM usertable WHERE USERID = ? AND PW = ?", new String[] {userid, pw});
+        if (c.getCount() > 0)
+            return true;
+        else
+            return false;
+    }
+
     public long insertColumn(String userid, String pw, String name, int age, int sex, boolean health1
             , boolean health2, boolean health3, boolean health4, boolean health5, boolean health6, boolean health7){                          //데이터베이스 삽입
         ContentValues values = new ContentValues();
