@@ -40,12 +40,14 @@ public class EditAlarm extends AppCompatActivity {
     CheckBox cbSun, cbMon, cbTue, cbWed, cbThu, cbFri, cbSat;
     alarmDBHelper dbHelper;
     int start_year, start_month, start_date, end_year, end_month, end_date;
+    public static Context context;
 
     @SuppressLint({"SetTextI18n", "CutPasteId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_alarm);
+        context = this;
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
@@ -54,6 +56,7 @@ public class EditAlarm extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         startdate.setText(calendar.get(YEAR) + "-" + (calendar.get(Calendar.MONTH)+1) + "-" + calendar.get(Calendar.DATE));
         enddate.setText(calendar.get(YEAR) + "-" + (calendar.get(Calendar.MONTH)+1) + "-" + calendar.get(Calendar.DATE));
+
         DatePickerDialog startDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @SuppressLint("SetTextI18n")
             @Override

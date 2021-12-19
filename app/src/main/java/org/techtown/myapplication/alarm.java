@@ -176,17 +176,6 @@ public class alarm extends Fragment {
         t = rootView.findViewById(R.id.TimeLeftText);
         text = getString(R.string.time_left);
 
-        alarmadapter.setOnItemClickListener(new alarmAdapter.OnItemClickListener()
-        {
-            @Override
-            public void onItemClick(View v, int pos)
-            {
-                Intent intent = new Intent(getContext(),EditAlarm.class);
-                intent.putExtra("pos",Long.parseLong(arrayIndex.get(pos)));
-                startActivity(intent);
-            }
-        });
-
         dbHelper = new alarmDBHelper(this.getContext());
         dbHelper.open();
         dbHelper.create();
