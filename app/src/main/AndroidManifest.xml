@@ -16,6 +16,7 @@
             tools:ignore="Instantiatable"></activity>
         <activity android:name=".EditAlarm"></activity>
         <activity android:name=".AddAlarm"></activity>
+        <activity android:name=".BottomNavibar"></activity>
         <activity android:name=".MainActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

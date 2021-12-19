@@ -41,7 +41,7 @@
         android:id="@+id/AddButton"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="70dp"
         android:backgroundTint="#00FFFFFF"
         android:onClick="addAlarm"
         app:layout_constraintBottom_toBottomOf="parent"

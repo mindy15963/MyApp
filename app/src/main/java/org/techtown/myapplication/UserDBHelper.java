@@ -74,7 +74,7 @@ public class UserDBHelper {
     }
 
     public Cursor sortColumn(){                                                                             //데이터베이스 정렬
-        Cursor c = uDB.rawQuery( "SELECT * FROM userdb ORDER BY " + "userid" + ";", null);
+        Cursor c = uDB.rawQuery( "SELECT * FROM usertable ORDER BY " + "userid" + ";", null);
         return c;
     }
 

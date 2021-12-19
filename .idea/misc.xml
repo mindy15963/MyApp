@@ -6,12 +6,15 @@
         <entry key="..\:/AndroidProgramming/app0.0.0/app/src/main/res/layout/activity_main.xml" value="0.26856884057971014" />
         <entry key="..\:/AndroidProgramming/app0.0.0/app/src/main/res/layout/add_alarm.xml" value="0.3302083333333333" />
         <entry key="..\:/AndroidProgramming/app0.0.0/app/src/main/res/layout/alarm.xml" value="0.26856884057971014" />
+        <entry key="..\:/AndroidProgramming/app0.0.0/app/src/main/res/layout/bottom_navi.xml" value="0.33" />
         <entry key="..\:/AndroidProgramming/app0.0.0/app/src/main/res/layout/edit_alarm.xml" value="0.5" />
         <entry key="..\:/AndroidProgramming/app0.0.0/app/src/main/res/layout/extend_search_btn.xml" value="0.33" />
         <entry key="..\:/AndroidProgramming/app0.0.0/app/src/main/res/layout/item_alarm.xml" value="0.3302083333333333" />
         <entry key="..\:/AndroidProgramming/app0.0.0/app/src/main/res/layout/login.xml" value="0.39375" />
         <entry key="..\:/AndroidProgramming/app0.0.0/app/src/main/res/layout/recommend_btn.xml" value="0.33" />
         <entry key="..\:/AndroidProgramming/app0.0.0/app/src/main/res/layout/star_btn.xml" value="0.26856884057971014" />
+        <entry key="..\:/AndroidProgramming/app0.0.0/app/src/main/res/layout/take_btn.xml" value="0.3302083333333333" />
+        <entry key="..\:/AndroidProgramming/app0.0.0/app/src/main/res/menu/bottom_menu.xml" value="0.5" />
       </map>
     </option>
   </component>

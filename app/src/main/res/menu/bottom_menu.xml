@@ -4,34 +4,34 @@
         android:id="@+id/action_recommend"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_wifi_protected_setup_24"
-        android:title="recommend"
+        android:title="추천"
         />
 
     <item
         android:id="@+id/action_star"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_star_24"
-        android:title="star"
+        android:title="즐겨찾기"
         />
 
     <item
-        android:id="@+id/action_login"
+        android:id="@+id/action_take"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_login_24"
-        android:title="login"
+        android:title="자유공간"
         />
 
     <item
         android:id="@+id/action_extend_sc"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_zoom_in_24"
-        android:title="extend_sc"
+        android:title="확장 검색"
         />
 
     <item
         android:id="@+id/action_alarm"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_access_alarm_24"
-        android:title="alarm"
+        android:title="알람"
         />
 </menu>
