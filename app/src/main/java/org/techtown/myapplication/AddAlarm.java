@@ -49,7 +49,11 @@ import android.widget.TimePicker;
 
 import java.util.Calendar;*/
 
-
+/**
+ * 알람을 추가하는 기능
+ * -AlarmManager를 이용하여 알람을 추가합니다.
+ * @author 유세빈, 김은석, 이하나, 김동권
+ */
 public class AddAlarm extends AppCompatActivity {
 
     private TimePicker timePicker;
@@ -63,6 +67,10 @@ public class AddAlarm extends AppCompatActivity {
     int start_year, start_month, start_date, end_year, end_month, end_date;
     public static Context context;
 
+    /**
+     * 기능 수행시 호출되는 메소드
+     * @param savedInstanceState
+     */
     @SuppressLint({"SetTextI18n", "CutPasteId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +87,13 @@ public class AddAlarm extends AppCompatActivity {
         enddate.setText(calendar.get(YEAR) + "-" + calendar.get(Calendar.MONTH) + "-" + calendar.get(Calendar.DATE));
 
         DatePickerDialog startDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            /**
+             * 시작 날짜 설정
+             * @param view
+             * @param year
+             * @param month
+             * @param day
+             */
             @SuppressLint("SetTextI18n")
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) { //DB는 여기서? 처리하면? 될것같아요..........
@@ -90,6 +105,10 @@ public class AddAlarm extends AppCompatActivity {
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE));
 
         startdatebtn.setOnClickListener(new View.OnClickListener() {
+            /**
+             * 시작 날짜 버튼
+             * @param view
+             */
             @Override
             public void onClick(View view) {
                 if (startdatebtn.isClickable()) {
@@ -99,6 +118,13 @@ public class AddAlarm extends AppCompatActivity {
         });
 
         DatePickerDialog endDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            /**
+             * 종료 날짜 설정
+             * @param view
+             * @param year
+             * @param month
+             * @param day
+             */
             @SuppressLint("SetTextI18n")
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
@@ -110,6 +136,10 @@ public class AddAlarm extends AppCompatActivity {
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE));
 
         enddatebtn.setOnClickListener(new View.OnClickListener() {
+            /**
+             * 종료 날짜 버튼
+             * @param view
+             */
             @Override
             public void onClick(View view) {
                 if (enddatebtn.isClickable()) {
@@ -130,6 +160,10 @@ public class AddAlarm extends AppCompatActivity {
         cancelbtn = findViewById(R.id.addcancelBtn);
 
         savebtn.setOnClickListener(new View.OnClickListener() {
+            /**
+             * 저장 버튼
+             * @param view
+             */
             @Override
             public void onClick(View view) {
                 regist(view);
@@ -137,6 +171,10 @@ public class AddAlarm extends AppCompatActivity {
         });
 
         cancelbtn.setOnClickListener(new View.OnClickListener() {
+            /**
+             * 취소 버튼
+             * @param view
+             */
             @Override
             public void onClick(View view) {
                 finish();
@@ -147,8 +185,10 @@ public class AddAlarm extends AppCompatActivity {
         dbHelper.open();
     }
 
-
-
+    /**
+     * 저장 버튼 눌렸을 때 작동하는 함수
+     * @param view
+     */
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void regist(View view) {
 
@@ -204,12 +244,9 @@ public class AddAlarm extends AppCompatActivity {
         finish();
     }
 
-    public void unregist(View view) {
-        Intent intent = new Intent(this, AddAlarm.class);
-        PendingIntent pIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
-        alarmManager.cancel(pIntent);
-    }// unregist()..
-
+    /**
+     * 초기화 함수
+     */
     @SuppressLint("CutPasteId")
     private void initialize() {
         cbSun = findViewById(R.id.cb_sun);

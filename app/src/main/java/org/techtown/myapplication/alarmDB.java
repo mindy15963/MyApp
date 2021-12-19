@@ -1,9 +1,16 @@
 package org.techtown.myapplication;
 
 import android.provider.BaseColumns;
-
+/**
+ * 알람 DB
+ * -알람을 관리하는 데이터베이스입니다.
+ * @author 유세빈, 김은석, 이하나, 김동권
+ */
 public final class alarmDB {
 
+    /**
+     * DB 생성
+     */
     public static final class CreateDB implements BaseColumns {
         public static final String HOUR = "hour";
         public static final String MINUTE = "minute";

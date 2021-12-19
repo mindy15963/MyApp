@@ -30,7 +30,11 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 
 public class alarm extends Fragment {
-
+    /**
+     * 알람 화면
+     * -알람 기능을 하는 화면입니다.
+     * @author 유세빈, 김은석, 이하나, 김동권
+     */
     private ArrayList<alarmData> alarmList = new ArrayList<>();
     static ArrayList<String> arrayIndex  =  new ArrayList<>();
     private alarmAdapter alarmadapter;
@@ -51,6 +55,12 @@ public class alarm extends Fragment {
     alarmDBHelper dbHelper;
     TextView t;
 
+    /**
+     * 남은 시간 계산
+     * @param hour
+     * @param day
+     * @return count*24+resh
+     */
     @RequiresApi(api = Build.VERSION_CODES.O)
     public int left_time_calc(int hour, int day){
         boolean end = false;
@@ -86,7 +96,10 @@ public class alarm extends Fragment {
         return count*24+resh;
     }
 
-    //요일 출력값 설정
+    /**
+     * 요일 출력값 설정
+     * @param day
+     */
     public void day_calc(int day){
         String result = "";
         if(day == 7654321) add_string_day = ",매일";
@@ -107,6 +120,11 @@ public class alarm extends Fragment {
         }
     }
 
+    /**
+     * 요일 표시
+     * @param day
+     * @return result
+     */
     public String day_calc_string(int day){
         String result = "";
         if(day == 7654321) return ",매일";
@@ -127,8 +145,13 @@ public class alarm extends Fragment {
         }
     }
 
-
-    //알람 추가
+    /**
+     * 알람 추가
+     * @param h
+     * @param m
+     * @param med
+     * @param day
+     */
     public void set_add_parameter(int h, int m, int med, int day){
         add_h = h;
         add_m = m;
@@ -146,6 +169,13 @@ public class alarm extends Fragment {
         alarmadapter.notifyDataSetChanged();
     }
 
+    /**
+     * 기능 수행시 호출되는 메소드
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return rootView
+     */
     @RequiresApi(api = Build.VERSION_CODES.O)
 
     @Nullable
@@ -163,6 +193,10 @@ public class alarm extends Fragment {
 //추가버튼 이벤트 설정
         ImageButton addButton = (ImageButton)rootView.findViewById(R.id.AddButton);
         addButton.setOnClickListener(new View.OnClickListener() {
+            /**
+             * 추가 버튼
+             * @param view
+             */
             @Override
             public void onClick(View view) {
                 Context context = view.getContext();
@@ -187,6 +221,9 @@ public class alarm extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @SuppressLint("Range")
+    /**
+     * 데이터베이스 보여주기
+     */
     public void showDatabase(){                                                                 //데이터베이스 내용들을 리사이클러뷰에 표시
         Cursor iCursor = dbHelper.sortColumn();
         Log.d("showDatabase", "DB Size: " + iCursor.getCount());

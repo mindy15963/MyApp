@@ -18,6 +18,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * 회원가입
+ * -회원가입을 하는 기능을 합니다.
+ * @author 유세빈, 김은석, 이하나, 김동권
+ */
 public class Join extends AppCompatActivity {
     Button[] btnsex = new Button[2];
     Button[] btnhealth = new Button[7];
@@ -36,6 +41,10 @@ public class Join extends AppCompatActivity {
     String id, pw, name;
     int age, sex = 0;
 
+    /**
+     * 기능 수행시 호출되는 메소드
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +75,10 @@ public class Join extends AppCompatActivity {
         DBHelper.create();
 
         View.OnClickListener onClickListener = new View.OnClickListener() {
+            /**
+             * 설정하기
+             * @param v
+             */
             @Override
             public void onClick(View v){
                 switch (v.getId()) {

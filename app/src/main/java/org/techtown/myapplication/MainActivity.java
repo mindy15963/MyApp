@@ -17,8 +17,11 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
-
-// login screen
+/**
+ * 초기화면
+ * -앱 실행시 나오는 첫화면으로 로그인 화면이 나옵니다.
+ * @author 유세빈, 김은석, 이하나, 김동권
+ */
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mRv_user;
@@ -26,7 +29,10 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<UserItem> mUserItems;
     private UserDBHelper DBHelper;
 
-
+    /**
+     * 기능 수행시 호출되는 메소드
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,13 +43,17 @@ public class MainActivity extends AppCompatActivity {
         EditText id = (EditText)findViewById(R.id.id);
         EditText pw = (EditText)findViewById(R.id.pwd);
         Button btnSignup = (Button)findViewById(R.id.btn_signup);
-        Button btnLoign = (Button)findViewById(R.id.btn_login);
+        Button btnLogin = (Button)findViewById(R.id.btn_login);
 
         DBHelper = new UserDBHelper(this);
         DBHelper.open();
         DBHelper.create();
 
         btnSignup.setOnClickListener(new View.OnClickListener() {
+            /**
+             * 회원가입 버튼
+             * @param view
+             */
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,Join.class);
@@ -51,7 +61,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnLoign.setOnClickListener(new View.OnClickListener() {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            /**
+             * 로그인 버튼
+             * @param view
+             */
             @Override
             public void onClick(View view) {
                 String cid = id.getText().toString();

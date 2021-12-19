@@ -2,8 +2,16 @@ package org.techtown.myapplication;
 
 import android.provider.BaseColumns;
 
+/**
+ * 사용자 DB
+ * -사용자를 관리하는 데이터베이스입니다.
+ * @author 유세빈, 김은석, 이하나, 김동권
+ */
 public final class UserDB {
 
+    /**
+     * DB 생성
+     */
     public static final class CreateDB implements BaseColumns {
         public static final String UKEY = "ukey";
         public static final String USERID = "userid";

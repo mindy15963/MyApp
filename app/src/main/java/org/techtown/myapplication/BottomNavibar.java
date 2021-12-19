@@ -14,6 +14,12 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 // Bottom Navigator
+/**
+ * 네비게이션바
+ * -메뉴 기능을 합니다.
+ * @author 유세빈, 김은석, 이하나, 김동권
+ */
+
 public class BottomNavibar extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;  // 하단바
 
@@ -25,6 +31,10 @@ public class BottomNavibar extends AppCompatActivity {
     private ExtendSearch_Btn frag4;
     private alarm frag5;
 
+    /**
+     * 기능 수행시 호출되는 메소드
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +43,11 @@ public class BottomNavibar extends AppCompatActivity {
         actionBar.hide();
         bottomNavigationView = findViewById(R.id.bottomNavi);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            /**
+             * 메뉴 선택
+             * @param item
+             * @return true
+             */
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
@@ -74,7 +89,10 @@ public class BottomNavibar extends AppCompatActivity {
     }
      */
 
-
+    /**
+     * 메뉴 실행
+     * @param n
+     */
     private void setFrag(int n) {
         fm = getSupportFragmentManager();
         ft = fm.beginTransaction();
