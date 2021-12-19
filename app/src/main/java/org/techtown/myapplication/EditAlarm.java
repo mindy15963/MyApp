@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class EditAlarm extends AppCompatActivity {
@@ -22,5 +23,8 @@ public class EditAlarm extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_alarm);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
     }
 }

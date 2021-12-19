@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.w3c.dom.Text;
@@ -62,6 +63,9 @@ public class AddAlarm extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_alarm);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         initialize();
 
@@ -142,7 +146,7 @@ public class AddAlarm extends AppCompatActivity {
         hour = timePicker.getHour();
         minute = timePicker.getMinute();
 
-        Intent intent = new Intent(this, AddAlarm.class);
+        Intent intent = new Intent(this, alarm.class);
         intent.putExtra("weekday", week);
         PendingIntent pIntent = PendingIntent.getBroadcast(this, 0,intent, 0); //PendingIntent.FLAG_UPDATE_CURRENT
         Calendar calendar = Calendar.getInstance();
@@ -172,7 +176,7 @@ public class AddAlarm extends AppCompatActivity {
     }
 
     public void unregist(View view) {
-        Intent intent = new Intent(this, AddAlarm.class);
+        Intent intent = new Intent(this, alarm.class);
         PendingIntent pIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
         alarmManager.cancel(pIntent);
     }// unregist()..

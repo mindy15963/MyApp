@@ -212,7 +212,7 @@ public class alarm extends Fragment {
             if(min<0) min=ltc;
             else if(min>ltc) min=ltc;
         }
-        if(min<0) t.setText("저장된 알람이 없습니다.");
+        if(min<0) t.setText("\n저장된 알람이 없습니다.");
         else t.setText(String.format(text,min));
     }
 

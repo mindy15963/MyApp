@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">My Application</string>
-    <string name="time_left">%d 시간 뒤 복약 알림</string>
+    <string name="time_left">\n%d 시간 뒤 복약 알림</string>
 </resources>
